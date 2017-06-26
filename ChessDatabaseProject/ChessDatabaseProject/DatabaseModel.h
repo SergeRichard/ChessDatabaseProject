@@ -12,8 +12,10 @@ public:
 
 	void Update();
 
+	const std::stack<std::string>& GetMoves() { return m_moves; }
+
 private:
-	DatabaseView m_view;
+
 	std::stack<std::string> m_moves;
 	
 };

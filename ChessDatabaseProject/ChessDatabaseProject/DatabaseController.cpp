@@ -10,7 +10,7 @@ DatabaseController::~DatabaseController()
 }
 
 void DatabaseController::Update() {
-	databaseModel.Update();
+	m_view.DisplayBoard(databaseModel.GetMoves());
 
 
 }

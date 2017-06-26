@@ -11,7 +11,7 @@ public:
 
 private:
 	DatabaseModel databaseModel;
-
+	DatabaseView m_view;
 
 };
 

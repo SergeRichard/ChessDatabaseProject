@@ -1,0 +1,24 @@
+<White move="e2-e4">
+	<Black move="e7-e5">
+		<White move="g1-f3">
+			<Black move="b8-c6">
+				<White move="d2-d4">
+					<Black move="e5-d4">
+						<White move="f3-d4">
+						</White>
+					</Black>
+				</White>
+			</Black>
+		</White>
+	</Black>
+</White>
+<White move="d2-d4">
+	<Black move="d7-d5">
+		<White move="c2-c4">
+		</White>
+	</Black>
+</White>
+<White move="g1-f3">
+	<Black move="b8-c6">
+	</Black>
+</White>
