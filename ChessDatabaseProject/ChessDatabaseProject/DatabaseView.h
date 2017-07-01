@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <stack>
+#include <queue>
 
 class DatabaseView
 {
@@ -9,7 +9,7 @@ public:
 	DatabaseView();
 	~DatabaseView();
 
-	void DisplayBoard(const std::stack<std::string>& moves);
+	void DisplayBoard(const std::queue<std::string>& moves);
 
 	friend std::ostream& operator<< (std::ostream& stream, const std::string board[8][8]);
 

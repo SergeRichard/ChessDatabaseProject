@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <stack>
+#include <queue>
+#include <vector>
 #include "DatabaseView.h"
 
 class DatabaseModel
@@ -12,11 +13,12 @@ public:
 
 	void Update();
 
-	const std::stack<std::string>& GetMoves() { return m_moves; }
+	const std::queue<std::string>& GetMoves() { return m_moves; }
 
 private:
 
-	std::stack<std::string> m_moves;
+	std::queue<std::string> m_moves;
+	std::vector<std::string> m_currentPossibleMoves;
 	
 };
 
