@@ -4,10 +4,10 @@
 int main() {
 	DatabaseController controller;
 
-	//while (true)
-	//{
+	while (true)
+	{
 		controller.Update();
-	//}
+	}
 
 	getchar();
 

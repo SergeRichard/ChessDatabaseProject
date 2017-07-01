@@ -41,7 +41,7 @@ std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::stri
 
 			// if not the move expected, ignore line and proceed to next until move is found.
 			if (!copyOfMovesPlayed.empty()) {
-				if (copyOfMovesPlayed.front() == strOneLine) {
+				if (strOneLine.find(copyOfMovesPlayed.front()) != std::string::npos) {
 					copyOfMovesPlayed.pop();
 				}
 				continue;

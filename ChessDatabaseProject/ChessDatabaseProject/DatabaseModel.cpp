@@ -19,3 +19,11 @@ const std::vector<std::string> DatabaseModel::GetCandidateMoves() {
 	return candidateMoves;
 
 }
+std::string DatabaseModel::GetPlayerInput() {
+	std::string input;
+	std::cin >> input;
+	return input;
+}
+void DatabaseModel::ProcessPlayerInput(std::string move) {
+	m_movesPlayed.push(move);
+}
