@@ -10,7 +10,7 @@ public:
 	void Update();
 
 private:
-	DatabaseModel databaseModel;
+	DatabaseModel m_databaseModel;
 	DatabaseView m_view;
 
 };

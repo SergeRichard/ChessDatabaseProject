@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include "DatabaseView.h"
+#include "DatabaseIO.h"
 
 class DatabaseModel
 {
@@ -13,11 +14,11 @@ public:
 
 	void Update();
 
-	const std::queue<std::string>& GetMoves() { return m_moves; }
+	const std::vector<std::string>& GetCandidateMoves();
 
 private:
-
-	std::queue<std::string> m_moves;
+	DatabaseIO m_databaseIO;
+	std::queue<std::string> m_movesPlayed;
 	std::vector<std::string> m_currentPossibleMoves;
 	
 };

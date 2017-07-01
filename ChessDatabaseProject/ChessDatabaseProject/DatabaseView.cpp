@@ -12,7 +12,7 @@ DatabaseView::~DatabaseView()
 {
 }
 
-void DatabaseView::DisplayBoard(const std::queue<std::string>& moves) 
+void DatabaseView::DisplayBoard(const std::vector<std::string>& moves) 
 {
 	if (moves.size() == 0) {
 		std::cout << m_board;

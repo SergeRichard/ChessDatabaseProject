@@ -11,22 +11,22 @@ DatabaseIO::~DatabaseIO()
 {
 }
 
-const std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::string>& m_moves) const
+std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::string>& m_movesPlayed)
 {
 	std::ifstream inFile("Database.txt");
 	std::string strOneLine;
 	std::vector<std::string> possibleMoves;
 	std::string startPlace;
 	bool initialMoves = false;
-	std::queue<std::string> movesCopy = m_moves;
 
 	bool expectingClosingTag = false;
+	std::queue<std::string> copyOfMovesPlayed = m_movesPlayed;
 
 	if (!inFile) {
 		std::cout << "Can't open file!" << std::endl;
 	}
 	
-	if (movesCopy.empty()) {
+	if (copyOfMovesPlayed.empty()) {
 		initialMoves = true;
 
 	}
@@ -40,24 +40,26 @@ const std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std
 			trim(strOneLine);
 
 			// if not the move expected, ignore line and proceed to next until move is found.
-			if (!movesCopy.empty()) {
-				if (movesCopy.front() == strOneLine) {
-					movesCopy.pop();
+			if (!copyOfMovesPlayed.empty()) {
+				if (copyOfMovesPlayed.front() == strOneLine) {
+					copyOfMovesPlayed.pop();
 				}
 				continue;
 			}
 
 			// if no more moves to look for, we are ready to collect all current moves.
-			if (strOneLine.find("</White>") != std::string::npos || strOneLine.find("</Black>") != std::string::npos) {
-				openTags++;
-				if (strOneLine.find("move=\"") != std::string::npos) {
-					std::string move;
-					std::size_t start = strOneLine.find("\"");
-					std::size_t end = strOneLine.find("\"", start + 1);
-					move = strOneLine.substr(start + 1, end - start - 1);
+			if (strOneLine.find("</White>") == std::string::npos && strOneLine.find("</Black>") == std::string::npos) {
+				if (openTags == 0) {
+					if (strOneLine.find("move=\"") != std::string::npos) {
+						std::string move;
+						std::size_t start = strOneLine.find("\"");
+						std::size_t end = strOneLine.find("\"", start + 1);
+						move = strOneLine.substr(start + 1, end - start - 1);
 
-					possibleMoves.push_back(move);
+						possibleMoves.push_back(move);
+					}
 				}
+				openTags++;
 			}
 			else {
 				openTags--;
