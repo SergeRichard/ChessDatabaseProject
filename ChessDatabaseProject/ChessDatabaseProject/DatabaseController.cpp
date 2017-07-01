@@ -11,7 +11,7 @@ DatabaseController::~DatabaseController()
 
 void DatabaseController::Update() {
 
-	m_view.DisplayBoard(m_databaseModel.GetCandidateMoves());
+	m_view.DisplayBoard(m_databaseModel.GetCandidateMoves(), m_databaseModel.GetMovesPlayed());
 
 
 }

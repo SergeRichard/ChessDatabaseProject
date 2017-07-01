@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <queue>
 
 class DatabaseView
 {
@@ -9,7 +10,7 @@ public:
 	DatabaseView();
 	~DatabaseView();
 
-	void DisplayBoard(const std::vector<std::string>& moves);
+	void DisplayBoard(const std::vector<std::string>& moves, const std::queue<std::string>& movesPlayed);
 
 	friend std::ostream& operator<< (std::ostream& stream, const std::string board[8][8]);
 

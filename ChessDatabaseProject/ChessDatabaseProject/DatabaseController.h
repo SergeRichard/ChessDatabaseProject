@@ -13,5 +13,6 @@ private:
 	DatabaseModel m_databaseModel;
 	DatabaseView m_view;
 
+
 };
 

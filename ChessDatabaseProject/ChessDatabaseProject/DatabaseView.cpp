@@ -12,9 +12,9 @@ DatabaseView::~DatabaseView()
 {
 }
 
-void DatabaseView::DisplayBoard(const std::vector<std::string>& moves) 
+void DatabaseView::DisplayBoard(const std::vector<std::string>& candidateMoves, const std::queue<std::string>& movesPlayed) 
 {
-	if (moves.size() == 0) {
+	if (candidateMoves.size() == 0) {
 		std::cout << m_board;
 
 
