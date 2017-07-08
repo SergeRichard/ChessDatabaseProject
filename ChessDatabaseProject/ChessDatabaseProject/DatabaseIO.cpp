@@ -11,7 +11,7 @@ DatabaseIO::~DatabaseIO()
 {
 }
 
-std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::string>& m_movesPlayed)
+std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::vector<std::string>& m_movesPlayed)
 {
 	std::ifstream inFile("Database.txt");
 	std::string strOneLine;
@@ -20,13 +20,20 @@ std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::stri
 	bool initialMoves = false;
 
 	bool expectingClosingTag = false;
-	std::queue<std::string> copyOfMovesPlayed = m_movesPlayed;
+
+	std::queue<std::string> queueOfMovesPlayed;
+
+	for (auto m : m_movesPlayed) {
+		queueOfMovesPlayed.push(m);
+
+	}
+	
 
 	if (!inFile) {
 		std::cout << "Can't open file!" << std::endl;
 	}
 	
-	if (copyOfMovesPlayed.empty()) {
+	if (queueOfMovesPlayed.empty()) {
 		initialMoves = true;
 
 	}
@@ -40,9 +47,9 @@ std::vector<std::string> DatabaseIO::GetPossibleMoves(const std::queue<std::stri
 			trim(strOneLine);
 
 			// if not the move expected, ignore line and proceed to next until move is found.
-			if (!copyOfMovesPlayed.empty()) {
-				if (strOneLine.find(copyOfMovesPlayed.front()) != std::string::npos) {
-					copyOfMovesPlayed.pop();
+			if (!queueOfMovesPlayed.empty()) {
+				if (strOneLine.find(queueOfMovesPlayed.front()) != std::string::npos) {
+					queueOfMovesPlayed.pop();
 				}
 				continue;
 			}

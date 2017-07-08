@@ -12,7 +12,7 @@ DatabaseView::~DatabaseView()
 {
 }
 
-void DatabaseView::DisplayBoard(const std::vector<std::string>& candidateMoves, const std::queue<std::string>& movesPlayed) 
+void DatabaseView::DisplayBoard(const std::vector<std::string>& candidateMoves, const std::vector<std::string>& movesPlayed) 
 {
 	ClearScreen();
 

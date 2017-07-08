@@ -25,5 +25,5 @@ std::string DatabaseModel::GetPlayerInput() {
 	return input;
 }
 void DatabaseModel::ProcessPlayerInput(std::string move) {
-	m_movesPlayed.push(move);
+	m_movesPlayed.push_back(move);
 }

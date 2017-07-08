@@ -12,7 +12,7 @@ public:
 	DatabaseIO();
 	~DatabaseIO();
 
-	std::vector<std::string> GetPossibleMoves(const std::queue<std::string>& m_moves);
+	std::vector<std::string> GetPossibleMoves(const std::vector<std::string>& m_moves);
 
 private:
 
