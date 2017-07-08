@@ -22,7 +22,9 @@ public:
 	int ConvertToArrayCol(char colLetter);
 	int ConvertToArrayRow(char rowLetter);
 
-	void ProcessMove(int startCol, int startRow, int destCol, int destRow);
+	void ProcessMove(int startCol, int startRow, int destCol, int destRow, bool whiteMove);
+
+	void ProcessMoveCastling(std::string move, bool whiteMove);
 
 private:
 	std::string m_board[8][8] = 

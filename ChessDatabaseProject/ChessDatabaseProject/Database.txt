@@ -5,6 +5,26 @@
 				<White move="d2-d4">
 					<Black move="e5-d4">
 						<White move="f3-d4">
+							<Black move="f8-c5">
+								<White move="c1-e3">
+									<Black move="d8-f6">
+										<White move="c2-c3">
+											<Black move="g8-e7">
+												<White move="f1-c4">
+													<Black move="c6-e5">
+														<White move="c4-e2">
+															<Black move="o-o">
+																<White move="o-o">
+																</White>
+															</Black>
+														</White>
+													</Black>
+												</White>
+											</Black>
+										</White>
+									</Black>
+								</White>
+							</Black>
 						</White>
 					</Black>
 				</White>

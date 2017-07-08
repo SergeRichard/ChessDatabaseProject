@@ -32,24 +32,67 @@ void DatabaseView::ProcessMoves(const std::vector<std::string>& movesPlayed) {
 	std::string startMove;
 	std::string destMove;
 
-	for (auto mp : movesPlayed) {
+	bool whiteMove = true;
+
+	for (auto mp : movesPlayed) {		
+
 		std::string delimiters = "-x";
 		std::size_t start = mp.find_first_of(delimiters);
 
-		startMove = mp.substr(0, start);
-		destMove = mp.substr(start + 1);
+		if (mp != "o-o" && mp != "o-o-o") {
 
-		int startCol = ConvertToArrayCol(startMove[0]);
-		int startRow = ConvertToArrayRow(startMove[1]);
-		int destCol = ConvertToArrayCol(destMove[0]);
-		int destRow = ConvertToArrayRow(destMove[1]);
+			startMove = mp.substr(0, start);
+			destMove = mp.substr(start + 1);
 
-		ProcessMove(startCol, startRow, destCol, destRow);
+			int startCol = ConvertToArrayCol(startMove[0]);
+			int startRow = ConvertToArrayRow(startMove[1]);
+			int destCol = ConvertToArrayCol(destMove[0]);
+			int destRow = ConvertToArrayRow(destMove[1]);
+
+			ProcessMove(startCol, startRow, destCol, destRow, whiteMove);
+		}
+		else {
+			ProcessMoveCastling(mp, whiteMove);
+		}
+
+		whiteMove = !whiteMove;
 
 		int temp = 0;
 	}
 }
-void DatabaseView::ProcessMove(int startCol, int startRow, int destCol, int destRow) {
+void DatabaseView::ProcessMoveCastling(std::string move, bool whiteMove) {
+	if (move == "o-o") {
+		if (whiteMove) {
+			m_board[7][6] = m_board[7][4];
+			m_board[7][4] = "--";
+			m_board[7][5] = "WR";
+			m_board[7][7] = "--";
+		}
+		else {
+			m_board[0][6] = m_board[0][4];
+			m_board[0][4] = "--";
+			m_board[0][5] = "BR";
+			m_board[0][7] = "--";
+		}
+	}
+	else if (move == "o-o-o") {
+		if (whiteMove) {
+			m_board[7][2] = m_board[7][4];
+			m_board[7][4] = "--";
+			m_board[7][3] = "WR";
+			m_board[7][0] = "--";
+		}
+		else {
+			m_board[0][2] = m_board[0][4];
+			m_board[0][4] = "--";
+			m_board[0][3] = "BR";
+			m_board[0][0] = "--";
+		}
+
+	}
+
+}
+void DatabaseView::ProcessMove(int startCol, int startRow, int destCol, int destRow, bool whiteMove) {
 	m_board[destRow][destCol] = m_board[startRow][startCol];
 	m_board[startRow][startCol] = "--";
 
