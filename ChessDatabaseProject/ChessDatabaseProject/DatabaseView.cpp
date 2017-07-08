@@ -1,5 +1,5 @@
 #include "DatabaseView.h"
-
+#include "HelperFunctions.h"
 
 
 DatabaseView::DatabaseView()
@@ -14,7 +14,9 @@ DatabaseView::~DatabaseView()
 
 void DatabaseView::DisplayBoard(const std::vector<std::string>& candidateMoves, const std::queue<std::string>& movesPlayed) 
 {
-	
+	ClearScreen();
+
+	//ProcessPlayerMoves()
 
 	std::cout << m_board;
 	std::cout << std::endl;
@@ -23,10 +25,11 @@ void DatabaseView::DisplayBoard(const std::vector<std::string>& candidateMoves, 
 		std::cout << cm << std::endl;
 	}
 	std::cout << "White to move: ";
-
-
 }
-
+void DatabaseView::ClearScreen()
+{
+	std::cout << std::string(100, '\n');
+}
 std::ostream & operator<<(std::ostream & stream, const std::string board[8][8])
 {
 	for (int row = 0; row < 8; row++) {

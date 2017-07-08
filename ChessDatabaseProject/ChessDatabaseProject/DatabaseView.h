@@ -14,6 +14,8 @@ public:
 
 	friend std::ostream& operator<< (std::ostream& stream, const std::string board[8][8]);
 
+	void ClearScreen();
+
 private:
 	std::string m_board[8][8] = 
 	{
